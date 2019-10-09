@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1= title
+    if currentUser
+        span logged as #{currentUser.username}
+        br
+        span
+            a(href="/users/logout") Log Out;
+    else
+        span
+            a(href="/users/login") Log In;
+        
+
+    ul
+        li
+            a(href="/users/new") New User
+        each user in users
+            li #{user.username} #{user.password}
+
+        else
+            li No users in the Database
